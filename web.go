@@ -1,0 +1,32 @@
+package main
+
+import (
+    //"fmt"
+    "log"
+    "net/http"
+    "net/http/httputil"
+    "net/url"
+)
+
+func handler(w http.ResponseWriter, r *http.Request) {
+	if r.URL.Path != "/" {
+		http.Redirect(w, r, "http://old.asturix.com/" + r.URL.String(), 301)
+	} else {
+		u, err := url.Parse("http://www.cnn.com")
+		if err != nil {
+			log.Fatal(err)
+		}
+		 
+		reverse_proxy := httputil.NewSingleHostReverseProxy(u)
+		reverse_proxy.ServeHTTP(w, r)
+	}
+}
+
+func main() {
+
+	//http.Handle("/", reverse_proxy)
+	
+	http.HandleFunc("/", handler)
+    http.ListenAndServe(":8080", nil)
+    log.Println("Server started")
+}
