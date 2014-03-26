@@ -3,8 +3,6 @@ package main
 import (
 	"log"
 	"net/http"
-	"net/http/httputil"
-	"net/url"
 	"strings"
 )
 
@@ -14,18 +12,17 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	if path != "/" && !strings.HasPrefix(path, "/new") {
 		http.Redirect(w, r, "http://old.asturix.com" + path, 301)
 	} else {
-		u, err := url.Parse("http://web.asturix.com" + path)
-		if err != nil {
-			log.Fatal(err)
+		log.Println(path)
+		if path == "/" {
+			path = "/index.html"
 		}
-		 
-		reverse_proxy := httputil.NewSingleHostReverseProxy(u)
-		reverse_proxy.ServeHTTP(w, r)
+		log.Println(path[1:])
+		http.ServeFile(w, r, path[1:])
 	}
 }
 
 func main() {
 	http.HandleFunc("/", handler)
-	http.ListenAndServe(":80", nil)
+	http.ListenAndServe(":8080", nil)
 	log.Println("Server started")
 }
