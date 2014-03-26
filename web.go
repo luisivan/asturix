@@ -5,11 +5,14 @@ import (
 	"net/http"
 	"net/http/httputil"
 	"net/url"
+	"strings"
 )
 
 func handler(w http.ResponseWriter, r *http.Request) {
-	if r.URL.Path != "/" {
-		http.Redirect(w, r, "http://old.asturix.com" + r.URL.String(), 301)
+	path := r.URL.Path
+
+	if path != "/" && !strings.HasPrefix(path, "/new") {
+		http.Redirect(w, r, "http://old.asturix.com" + path, 301)
 	} else {
 		u, err := url.Parse("http://web.asturix.com")
 		if err != nil {
@@ -23,6 +26,6 @@ func handler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	http.HandleFunc("/", handler)
-	http.ListenAndServe(":80", nil)
+	http.ListenAndServe(":8080", nil)
 	log.Println("Server started")
 }
