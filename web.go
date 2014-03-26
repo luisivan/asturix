@@ -9,9 +9,9 @@ import (
 
 func handler(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path != "/" {
-		http.Redirect(w, r, "http://old.asturix.com/" + r.URL.String(), 301)
+		http.Redirect(w, r, "http://old.asturix.com" + r.URL.String(), 301)
 	} else {
-		u, err := url.Parse("http://www.cnn.com")
+		u, err := url.Parse("http://web.asturix.com")
 		if err != nil {
 			log.Fatal(err)
 		}
