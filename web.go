@@ -1,11 +1,10 @@
 package main
 
 import (
-    //"fmt"
-    "log"
-    "net/http"
-    "net/http/httputil"
-    "net/url"
+	"log"
+	"net/http"
+	"net/http/httputil"
+	"net/url"
 )
 
 func handler(w http.ResponseWriter, r *http.Request) {
@@ -23,10 +22,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-
-	//http.Handle("/", reverse_proxy)
-	
 	http.HandleFunc("/", handler)
-    http.ListenAndServe(":8080", nil)
-    log.Println("Server started")
+	http.ListenAndServe(":8080", nil)
+	log.Println("Server started")
 }
