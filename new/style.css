@@ -278,6 +278,17 @@ body {
 a {
   color: #44ac00;
 }
+header {
+  background: #3A9200;
+  height: 50px;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  line-height: 50px;
+}
+header a {
+  color: #d8d8d8;
+}
 body > div {
   width: 100%;
   padding: 20px 0;
@@ -315,7 +326,31 @@ body > div .wrapper p {
   color: white;
 }
 #now a {
-  color: #D8D8D8;
+  color: #d8d8d8;
+}
+#team ul li {
+  width: 128px;
+  height: 128px;
+  border-radius: 64px;
+  display: inline-block;
+  text-align: center;
+  margin: 35px;
+}
+#team ul li a {
+  display: inline-block;
+  margin-top: 140px;
+}
+#team ul li:nth-child(1) {
+  background-image: url(img/team/li.jpg);
+}
+#team ul li:nth-child(2) {
+  background-image: url(img/team/samuel.jpg);
+}
+#team ul li:nth-child(3) {
+  background-image: url(img/team/lm.jpg);
+}
+#team ul li:nth-child(4) {
+  background-image: url(img/team/ricardo.jpg);
 }
 #contact {
   background-color: #44ac00;

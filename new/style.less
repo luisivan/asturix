@@ -51,6 +51,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 @logoColor: #55d400;
 @mediumGreen: #44AC00;
 @darkerGreen: #338100;
+@whiteA: #D8D8D8;
 
 body {
 	font-family: 'Klavika', sans-serif;
@@ -59,6 +60,19 @@ body {
 
 a {
 	color: @mediumGreen;
+}
+
+header {
+	background: #3A9200;
+	height: 50px;
+	text-align: center;
+	color: white;
+	font-size: 20px;
+	line-height: 50px;
+
+	a {
+		color: @whiteA;
+	}
 }
 
 body > div {
@@ -105,7 +119,38 @@ body > div {
 	color: white;
 
 	a {
-		color: #D8D8D8;
+		color: @whiteA;
+	}
+}
+
+#team {
+	ul {
+		li {
+			width: 128px;
+			height: 128px;
+			border-radius: 64px;
+			display: inline-block;
+			text-align: center;
+			margin: 35px;
+
+			a {
+				display: inline-block;
+				margin-top: 140px;
+			}
+		}
+
+		li:nth-child(1) {
+			background-image: url(img/team/li.jpg);
+		}
+		li:nth-child(2) {
+			background-image: url(img/team/samuel.jpg);
+		}
+		li:nth-child(3) {
+			background-image: url(img/team/lm.jpg);
+		}
+		li:nth-child(4) {
+			background-image: url(img/team/ricardo.jpg);
+		}
 	}
 }
 
